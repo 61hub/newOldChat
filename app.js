@@ -8,7 +8,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
 function emitMessage(client, message) {
-  client.broadcast.emit('message', message);
   client.emit('message', message);
 }
 
@@ -26,6 +25,7 @@ io.on('connection', function (client) {
 
   client.on('message', function (message) {
     var fullMessage = client.name + ": " + message;
+    client.broadcast.emit('message', message);
     emitMessage(client, fullMessage);
     redisClient.lpush('messages', fullMessage)
   });
