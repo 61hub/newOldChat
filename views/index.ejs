@@ -21,14 +21,6 @@
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socketServer = io.connect('http://localhost:8082');
-    var userName = prompt("What's your name?");
-    socketServer.emit('join', userName);
-    socketServer.on('message', function (message) {
-        document.getElementsByClassName('messages')[0].innerHTML += "\n" + message;
-    })
-    document.getElementsByTagName('button')[0].addEventListener('click', function () {
-       socketServer.emit('message', document.getElementsByTagName('input')[0].value);
-    });
 </script>
 </body>
 </html>
