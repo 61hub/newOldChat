@@ -16,6 +16,7 @@ io.on('connection', function (client) {
   console.log("Client connected");
   client.on('join', function (name) {
     client.name = name || "Guest";
+    console.log(name + ' joined');
     redisClient.lrange('messages', 0, -1, function (err, data) {
       data.reverse().forEach(function (message) {
         emitMessage(client, message);
