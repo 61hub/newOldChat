@@ -25,7 +25,7 @@ io.on('connection', function (client) {
 
   client.on('message', function (message) {
     var fullMessage = client.name + ": " + message;
-    client.broadcast.emit('message', message);
+    client.broadcast.emit('message', fullMessage);
     emitMessage(client, fullMessage);
     redisClient.lpush('messages', fullMessage)
   });
