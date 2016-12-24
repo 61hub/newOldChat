@@ -15,11 +15,11 @@ socketServer.on("message", function (message) {
     messages.innerHTML += "<div>" + message + "</div>";
 });
 var button = document.getElementsByTagName("button")[0];
-button.addEventListener("click", sendMessage () );
+button.addEventListener("click", sendMessage );
 
 var form = document.getElementById("send");
-form.addEventListener("submit", sendMessage(event){
+form.addEventListener("submit", function (event) {
     event.preventDefault();
-    }
-)
+    sendMessage();
+});
 
