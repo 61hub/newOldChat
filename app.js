@@ -8,6 +8,8 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = 8082;
 
+app.use(express.static('public'));
+
 function emitMessage(client, message) {
   client.emit('message', message);
 }
